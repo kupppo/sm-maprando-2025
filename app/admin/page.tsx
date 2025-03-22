@@ -12,6 +12,7 @@ import {
 import Link from 'next/link'
 import EditSeedForm from './form'
 import { Separator } from '@/components/ui/separator'
+import { CheckIcon } from '@radix-ui/react-icons'
 import SetupMatch from './setup'
 
 export default async function AdminPage() {

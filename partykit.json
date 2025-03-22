@@ -1,0 +1,6 @@
+{
+  "$schema": "https://www.partykit.io/schema.json",
+  "name": "sm-maprando-2025",
+  "main": "partykit/server.ts",
+  "compatibilityDate": "2024-11-11"
+}

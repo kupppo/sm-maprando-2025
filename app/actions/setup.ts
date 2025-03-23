@@ -33,7 +33,7 @@ export const sendLoginLink = async (id: string, returnTo: string | null) => {
   if (returnTo) {
     loginLink.searchParams.set('returnTo', returnTo)
   }
-  const msg = `Here's your login link for the SM Multi-Cat 2024 tournament:\n${loginLink.toString()}`
+  const msg = `Here's your login link for the Map Rando Multicategory Tournament:\n${loginLink.toString()}`
   return InertiaAPI(`${baseUrl}/msg`, {
     method: 'POST',
     payload: {

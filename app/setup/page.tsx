@@ -44,7 +44,9 @@ export default async function RunnerSetup() {
   return (
     <div className="min-h-screen flex flex-col justify-center items-center w-full md:w-1/2 max-w-[500px] mx-auto px-4 text-center gap-y-8">
       <div>
-        <h1 className="text-4xl leading-none">SM Multi-Cat 2024</h1>
+        <h1 className="text-4xl leading-none">
+          Map Rando Multicategory Tournament
+        </h1>
         <div className="mt-4">
           <AnimatedNamePill name={user.name} />
         </div>

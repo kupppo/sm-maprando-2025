@@ -3,7 +3,6 @@ import { handleRaceStart } from '.'
 import InertiaAPI from '@/lib/inertia'
 import { send as InngestSend } from '@/lib/inngest'
 import { NonRetriableError } from 'inngest'
-import exp from 'constants'
 
 jest.mock('@/lib/inertia', () => {
   return {
@@ -387,12 +386,6 @@ describe('Inngest', () => {
             }),
           }),
         )
-        expect(mockInngestCall).toHaveBeenCalledWith({
-          name: 'race/mode.select',
-          data: expect.objectContaining({
-            roomUrl: 'http://racetime.localhost/sm/123',
-          }),
-        })
         expect(mockInertiaCall).toHaveBeenLastCalledWith(
           '/api/metafields',
           expect.objectContaining({

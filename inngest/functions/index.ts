@@ -157,17 +157,8 @@ export const handleRaceStart = inngest.createFunction(
           },
         })
 
-        // Set mode in Racetime
-        await inngestSend({
-          name: 'race/mode.select',
-          data: {
-            mode: randomMode.slug,
-            racetimeUrl: data.racetimeUrl,
-          },
-        })
-        const msg = `This race will be set to ${randomMode.name} shortly.`
-
         // Send message to racetime
+        const msg = `This race will be set to ${randomMode.name} shortly.`
         await InertiaAPI('/api/racetime/race/msg', {
           method: 'POST',
           payload: {
@@ -244,24 +235,3 @@ export const handleRaceScheduled = inngest.createFunction(
   },
 )
 
-export const handleModeSelection = inngest.createFunction(
-  { id: 'handle-mode-selection' },
-  { event: 'race/mode.select' },
-  async ({ event, step }) => {
-    const data = event.data as RaceModeEventData
-    await step.run('set-mode-on-racetime', async () => {
-      const mode = RaceModes.find((mode) => mode.slug === data.mode)
-      if (!mode) {
-        throw new NonRetriableError(`Mode not found: ${data.mode}`)
-      }
-
-      await InertiaAPI('/api/racetime/race', {
-        method: 'PUT',
-        payload: {
-          roomUrl: data.racetimeUrl,
-          goal: mode.slug,
-        },
-      })
-    })
-  },
-)

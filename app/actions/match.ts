@@ -81,13 +81,6 @@ export const setRaceMode = async (
       value: newStatus,
     },
   })
-  await inngest.send({
-    name: 'race/mode.select',
-    data: {
-      mode: modeId,
-      racetimeUrl: racetimeUrl,
-    },
-  })
   return true
 }
 

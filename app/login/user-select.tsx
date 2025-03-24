@@ -112,7 +112,7 @@ export default function UserSelect({ users = [] }: { users: any[] }) {
         ) => {
           if (!keywords) return 0
           const extendValue = keywords.join(' ')
-          if (extendValue.includes(search)) return 1
+          if (extendValue.includes(search.toLowerCase())) return 1
           return 0
         }}
       >
@@ -124,7 +124,7 @@ export default function UserSelect({ users = [] }: { users: any[] }) {
               <CommandItem
                 key={user.id}
                 value={user.id}
-                keywords={[user.name]}
+                keywords={[user.name.toLowerCase()]}
                 onSelect={() => {
                   setSelectedUser(user.id)
                 }}

@@ -111,7 +111,7 @@ const PlayerVeto = (props: any) => {
       {picker ? (
         <>
           <p className="text-center w-full mb-4">Select a mode to veto</p>
-          <ul className="grid grid-cols-2 gap-2">
+          <ul className="grid gap-2">
             {RaceModes.map((mode) => (
               <li key={mode.slug} className="w-full">
                 <Button
@@ -177,7 +177,7 @@ const PlayerPick = (props: any) => {
       {picker ? (
         <>
           <p className="text-center w-full mb-4">Select a mode to play</p>
-          <ul className="grid grid-cols-2 gap-2">
+          <ul className="grid gap-2">
             {RaceModes.map((mode) => (
               <li key={mode.slug} className="w-full">
                 <Button

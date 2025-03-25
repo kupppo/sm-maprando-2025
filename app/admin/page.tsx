@@ -37,7 +37,7 @@ export default async function AdminPage() {
   )
 
   const pendingMatches = allMatches.filter(
-    (match: any) => match.status === 'PENDING' || match.status === 'SCHEDULED',
+    (match: any) => match.status === 'PENDING' || match.status === 'SCHEDULED' || match.status === 'SETTING_UP',
   )
   const matches = await Promise.all(
     pendingMatches.map(async (match: any) => {

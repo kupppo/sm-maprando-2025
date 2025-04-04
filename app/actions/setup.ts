@@ -44,7 +44,7 @@ export const sendLoginLink = async (id: string, returnTo: string | null) => {
 
 export const setupMatch = async (matchId: string) => {
   await inngest.send({
-    name: 'race/scheduled',
+    name: 'sm-maprando-2025/race.scheduled',
     data: {
       matchId: matchId,
     },

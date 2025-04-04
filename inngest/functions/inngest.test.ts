@@ -199,7 +199,7 @@ describe('Inngest', () => {
       const { error } = await t.executeStep('get-match', {
         events: [
           {
-            name: 'race/initiate',
+            name: 'sm-maprando-2025/race.initiate',
             data: {
               matchId: '1',
               raceId: '1',
@@ -220,7 +220,7 @@ describe('Inngest', () => {
         const { result } = await t.executeStep('determine-race-number', {
           events: [
             {
-              name: 'race/initiate',
+              name: 'sm-maprando-2025/race.initiate',
               data: {
                 matchId: '1',
                 raceId: '1',
@@ -237,7 +237,7 @@ describe('Inngest', () => {
         const { result } = await t.executeStep('determine-race-number', {
           events: [
             {
-              name: 'race/initiate',
+              name: 'sm-maprando-2025/race.initiate',
               data: {
                 matchId: '1',
                 raceId: '2',
@@ -254,7 +254,7 @@ describe('Inngest', () => {
         const { result } = await t.executeStep('determine-race-number', {
           events: [
             {
-              name: 'race/initiate',
+              name: 'sm-maprando-2025/race.initiate',
               data: {
                 matchId: '1',
                 raceId: '3',
@@ -283,7 +283,7 @@ describe('Inngest', () => {
         await t.executeStep('progress-match', {
           events: [
             {
-              name: 'race/initiate',
+              name: 'sm-maprando-2025/race.initiate',
               data: {
                 matchId: '1',
                 raceId: '1',
@@ -312,7 +312,7 @@ describe('Inngest', () => {
         await t.executeStep('progress-match', {
           events: [
             {
-              name: 'race/initiate',
+              name: 'sm-maprando-2025/race.initiate',
               data: {
                 matchId: '1',
                 raceId: '1',
@@ -356,7 +356,7 @@ describe('Inngest', () => {
         const { result } = await t.executeStep('set-final-match', {
           events: [
             {
-              name: 'race/initiate',
+              name: 'sm-maprando-2025/race.initiate',
               data: {
                 matchId: '1',
                 raceId: '3',

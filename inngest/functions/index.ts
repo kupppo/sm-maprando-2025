@@ -1,6 +1,5 @@
 import InertiaAPI from '@/lib/inertia'
 import { inngest } from '../client'
-import { send as inngestSend } from '@/lib/inngest'
 import { NonRetriableError } from 'inngest'
 import { RaceModes } from '@/app/config/tournament'
 
@@ -17,7 +16,7 @@ type RaceModeEventData = {
 
 export const handleRaceStart = inngest.createFunction(
   { id: 'handle-race-start' },
-  { event: 'race/initiate' },
+  { event: 'sm-maprando-2025/race.initiate' },
   async ({ event, step }) => {
     const data = event.data as RaceEventData
     const matchUrl = new URL(

@@ -27,7 +27,7 @@ export async function POST(req: Request) {
   switch (msg.event) {
     case 'race.setting_up':
       await inngest.send({
-        name: 'race/initiate',
+        name: 'sm-maprando-2025/race.initiate',
         data: {
           matchId: msg.match_id,
           racetimeUrl: msg.racetime_url,
@@ -37,7 +37,7 @@ export async function POST(req: Request) {
       break
     case 'race.scheduled':
       await inngest.send({
-        name: 'race/scheduled',
+        name: 'sm-maprando-2025/race.scheduled',
         data: {
           matchId: msg.match_id,
         },

@@ -184,7 +184,7 @@ export const handleRaceStart = inngest.createFunction(
 
 export const handleRaceScheduled = inngest.createFunction(
   { id: 'handle-race-scheduled' },
-  { event: 'race/scheduled' },
+  { event: 'sm-maprando-2025/race.scheduled' },
   async ({ event, step }) => {
     const data = event.data as RaceEventData
     await step.run('setup-match', async () => {

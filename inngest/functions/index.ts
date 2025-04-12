@@ -1,5 +1,6 @@
 import InertiaAPI from '@/lib/inertia'
 import { inngest } from '../client'
+import { send as inngestSend } from '@/lib/inngest'
 import { NonRetriableError } from 'inngest'
 import { RaceModes } from '@/app/config/tournament'
 
@@ -156,6 +157,14 @@ export const handleRaceStart = inngest.createFunction(
           },
         })
 
+        await inngestSend({
+          name: 'sm-maprando-2025/mode.select',
+          data: {
+            mode: randomMode.slug,
+            roomUrl: data.racetimeUrl,
+          },
+        })
+
         // Send message to racetime
         const msg = `This race will be set to ${randomMode.name} shortly.`
         await InertiaAPI('/api/racetime/race/msg', {
@@ -234,3 +243,24 @@ export const handleRaceScheduled = inngest.createFunction(
   },
 )
 
+export const handleModeSelection = inngest.createFunction(
+  { id: 'handle-mode-selection' },
+  { event: 'sm-maprando-2025/mode.select' },
+  async ({ event, step }) => {
+    const data = event.data as RaceModeEventData
+    await step.run('set-mode-on-racetime', async () => {
+      const mode = RaceModes.find((mode) => mode.slug === data.mode)
+      if (!mode) {
+        throw new NonRetriableError(`Mode not found: ${data.mode}`)
+      }
+
+      await InertiaAPI('/api/racetime/race', {
+        method: 'PUT',
+        payload: {
+          roomUrl: data.racetimeUrl,
+          goal: mode.slug,
+        },
+      })
+    })
+  },
+)

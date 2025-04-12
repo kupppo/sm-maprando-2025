@@ -386,6 +386,14 @@ describe('Inngest', () => {
             }),
           }),
         )
+
+        expect(mockInngestCall).toHaveBeenCalledWith({
+          name: 'sm-maprando-2025/mode.select',
+          data: expect.objectContaining({
+            roomUrl: 'http://racetime.localhost/sm/123',
+          }),
+        })
+
         expect(mockInertiaCall).toHaveBeenLastCalledWith(
           '/api/metafields',
           expect.objectContaining({
